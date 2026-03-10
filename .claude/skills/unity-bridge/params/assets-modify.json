@@ -1,0 +1,24 @@
+{
+  "name": "assets-modify",
+  "title": "Assets / Modify",
+  "description": "Modify asset file in the project. Use 'assets-get-data' tool first to inspect the asset structure before modifying. Not allowed to modify asset file in 'Packages/' folder. Please modify it in 'Assets/' folder.",
+  "parameters": [
+    {
+      "name": "assetRef",
+      "type": "object",
+      "required": "true",
+      "description": "Asset reference. SCHEMA: {\"assetPath\":\"Assets/path/to/asset\"} or {\"instanceID\":12345}"
+    },
+    {
+      "name": "content",
+      "type": "object",
+      "description": "JSON string of SerializedMember diff to apply. SCHEMA: {\"props\":[{\"name\":\"propertyName\",\"value\":any}],\"fields\":[{\"name\":\"fieldName\",\"value\":any}]}",
+      "required": "true"
+    }
+  ],
+  "hints": {
+    "commonMistakes": [
+      "Parameter is content, NOT jsonData"
+    ]
+  }
+}

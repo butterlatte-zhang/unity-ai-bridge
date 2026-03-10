@@ -1,0 +1,14 @@
+{
+  "name": "lightprobe-clear",
+  "title": "LightProbe / Clear Auto",
+  "description": "Remove auto-generated LightProbeGroup GameObjects from the scene. By default only removes groups whose name starts with 'LightProbeGroup_Auto'. Set removeAll=true to remove ALL LightProbeGroups.",
+  "parameters": [
+    {
+      "name": "removeAll",
+      "type": "boolean",
+      "description": "If true, remove ALL LightProbeGroups in the scene, not just auto-generated ones.",
+      "default": "false",
+      "required": "false"
+    }
+  ]
+}

@@ -1,0 +1,24 @@
+{
+  "name": "gameobject-component-destroy",
+  "title": "GameObject / Component / Destroy",
+  "description": "Destroy one or many components from target GameObject. Can't destroy missed components. Use 'gameobject-find' tool to find the target GameObject and 'gameobject-component-get' to get component details first.",
+  "parameters": [
+    {
+      "name": "gameObjectRef",
+      "type": "object",
+      "required": "true",
+      "description": "Target GameObject. SCHEMA: {\"name\":\"ObjectName\"} or {\"instanceID\":12345}"
+    },
+    {
+      "name": "destroyComponentRefs",
+      "type": "object",
+      "required": "true",
+      "description": "Array of component references to destroy. SCHEMA: [{\"typeName\":\"BoxCollider\"}] or [{\"typeName\":\"BoxCollider\",\"index\":0}]"
+    }
+  ],
+  "hints": {
+    "commonMistakes": [
+      "Parameter is destroyComponentRefs (array), NOT componentRef (single)"
+    ]
+  }
+}

@@ -1,0 +1,31 @@
+{
+  "name": "assets-prefab-create",
+  "title": "Assets / Prefab / Create",
+  "description": "Create a prefab from a GameObject in the current active scene. The prefab will be saved in the project assets at the specified path. Use 'gameobject-find' tool to find the target GameObject first.",
+  "parameters": [
+    {
+      "name": "prefabAssetPath",
+      "type": "string",
+      "description": "Save path for the new prefab. Example: \"Assets/Prefabs/MyPrefab.prefab\"",
+      "required": "true"
+    },
+    {
+      "name": "gameObjectRef",
+      "type": "object",
+      "required": "true",
+      "description": "Source GameObject reference. SCHEMA: {\"name\":\"ObjectName\"} or {\"instanceID\":12345} or {\"path\":\"hierarchy/path\"}"
+    },
+    {
+      "name": "replaceGameObjectWithPrefab",
+      "type": "boolean",
+      "description": "If true, the prefab will replace the GameObject in the scene.",
+      "default": "true",
+      "required": "false"
+    }
+  ],
+  "hints": {
+    "commonMistakes": [
+      "Parameter is prefabAssetPath, NOT savePath"
+    ]
+  }
+}

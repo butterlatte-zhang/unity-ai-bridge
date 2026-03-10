@@ -1,0 +1,21 @@
+{
+  "name": "editor-application-set-state",
+  "title": "Editor / Application / Set State",
+  "description": "Control the Unity Editor application state. You can start, stop, or pause the 'playmode'. Use 'editor-application-get-state' tool to get the current state first.",
+  "parameters": [
+    {
+      "name": "isPlaying",
+      "type": "boolean",
+      "description": "If true, the 'playmode' will be started. If false, the 'playmode' will be stopped.",
+      "default": "false",
+      "required": "false"
+    },
+    {
+      "name": "isPaused",
+      "type": "boolean",
+      "description": "If true, the 'playmode' will be paused. If false, the 'playmode' will be resumed.",
+      "default": "false",
+      "required": "false"
+    }
+  ]
+}

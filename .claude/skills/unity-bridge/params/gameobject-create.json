@@ -1,0 +1,50 @@
+{
+  "name": "gameobject-create",
+  "title": "GameObject / Create",
+  "description": "Create a new GameObject in opened Prefab or in a Scene. If needed - provide proper 'position', 'rotation' and 'scale' to reduce amount of operations.",
+  "parameters": [
+    {
+      "name": "name",
+      "type": "string",
+      "description": "Name of the new GameObject.",
+      "required": "true"
+    },
+    {
+      "name": "parentGameObjectRef",
+      "type": "object",
+      "description": "Parent GameObject reference. If not provided, the GameObject will be created at the root of the scene or prefab. Schema: {\"name\":\"string\"} or {\"instanceID\":int} or {\"path\":\"hierarchy/path\"}",
+      "required": "false"
+    },
+    {
+      "name": "position",
+      "type": "object",
+      "description": "Transform position of the GameObject. Schema: {\"x\":0,\"y\":0,\"z\":0}",
+      "required": "false"
+    },
+    {
+      "name": "rotation",
+      "type": "object",
+      "description": "Transform rotation of the GameObject. Euler angles in degrees. Schema: {\"x\":0,\"y\":0,\"z\":0}",
+      "required": "false"
+    },
+    {
+      "name": "scale",
+      "type": "object",
+      "description": "Transform scale of the GameObject. Schema: {\"x\":1,\"y\":1,\"z\":1}",
+      "required": "false"
+    },
+    {
+      "name": "isLocalSpace",
+      "type": "boolean",
+      "description": "World or Local space of transform.",
+      "default": "false",
+      "required": "false"
+    },
+    {
+      "name": "primitiveType",
+      "type": "string",
+      "required": "false",
+      "description": "Values: [Cube, Sphere, Capsule, Cylinder, Plane, Quad]"
+    }
+  ]
+}

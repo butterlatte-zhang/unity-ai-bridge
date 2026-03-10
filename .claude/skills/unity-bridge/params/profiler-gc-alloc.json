@@ -1,0 +1,42 @@
+{
+  "name": "profiler-gc-alloc",
+  "title": "Profiler / GC Allocations",
+  "description": "Returns the top N functions with the highest GC (garbage collection) allocations in a profiler frame, including their call paths. GC allocations are a major source of frame hitches in Unity — use this to find and eliminate them.",
+  "parameters": [
+    {
+      "name": "frameIndex",
+      "type": "integer",
+      "description": "Frame index to analyze. Use -1 for the latest available frame. Default: -1",
+      "default": "-1",
+      "required": "false"
+    },
+    {
+      "name": "threadIndex",
+      "type": "integer",
+      "description": "Thread index. 0 = Main Thread. Default: 0",
+      "default": "0",
+      "required": "false"
+    },
+    {
+      "name": "topN",
+      "type": "integer",
+      "description": "Number of top entries to return. Default: 20",
+      "default": "20",
+      "required": "false"
+    },
+    {
+      "name": "minBytes",
+      "type": "integer",
+      "description": "Minimum GC allocation bytes to include. Filters out trivial allocations. Default: 0",
+      "default": "0",
+      "required": "false"
+    },
+    {
+      "name": "maxDepth",
+      "type": "integer",
+      "description": "Maximum tree depth to scan. Default: 15",
+      "default": "15",
+      "required": "false"
+    }
+  ]
+}

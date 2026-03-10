@@ -1,0 +1,18 @@
+{
+  "name": "assets-prefab-open",
+  "title": "Assets / Prefab / Open",
+  "description": "Open prefab edit mode for a specific GameObject. In the Edit mode you can modify the prefab. The modification will be applied to all instances of the prefab across the project. Note: Please use 'assets-prefab-close' tool later to exit prefab editing mode.",
+  "parameters": [
+    {
+      "name": "gameObjectRef",
+      "type": "object",
+      "description": "Prefab GameObject reference (use instanceID from prefab-instantiate result, or name of prefab instance in scene). SCHEMA: {\"name\":\"PrefabName\"} or {\"instanceID\":12345}",
+      "required": "true"
+    }
+  ],
+  "hints": {
+    "commonMistakes": [
+      "Parameter is gameObjectRef{assetPath} (object), NOT prefabAssetPath (string)"
+    ]
+  }
+}

@@ -1,0 +1,18 @@
+{
+  "name": "package-remove",
+  "title": "Package Manager / Remove",
+  "description": "Remove (uninstall) a package from the Unity project. This removes the package from the project's manifest.json and triggers package resolution. Note: Built-in packages and packages that are dependencies of other installed packages cannot be removed. Note: Package removal may trigger a domain reload. The result will be sent after the reload completes. Use 'package-list' tool to list installed packages first.",
+  "parameters": [
+    {
+      "name": "packageId",
+      "type": "string",
+      "description": "The ID of the package to remove. Example: 'com.unity.textmeshpro'. Do not include version number.",
+      "required": "true"
+    },
+    {
+      "name": "requestId",
+      "type": "string",
+      "required": "false"
+    }
+  ]
+}

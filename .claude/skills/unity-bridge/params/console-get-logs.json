@@ -1,0 +1,40 @@
+{
+  "name": "console-get-logs",
+  "title": "Console / Get Logs",
+  "description": "Retrieves Unity Editor logs. Useful for debugging and monitoring Unity Editor activity.",
+  "parameters": [
+    {
+      "name": "maxEntries",
+      "type": "integer",
+      "description": "Maximum number of log entries to return. Default: 100",
+      "default": "100",
+      "required": "false"
+    },
+    {
+      "name": "logTypeFilter",
+      "type": "string",
+      "description": "Filter by log type. ENUM: \"Log\", \"Warning\", \"Error\", \"Assert\", \"Exception\". Leave empty for all types.",
+      "required": "false"
+    },
+    {
+      "name": "includeStackTrace",
+      "type": "boolean",
+      "description": "Include stack traces in the output. Default: false",
+      "default": "false",
+      "required": "false"
+    },
+    {
+      "name": "lastMinutes",
+      "type": "integer",
+      "description": "Return logs from the last N minutes. If 0, returns all available logs. Default: 0",
+      "default": "0",
+      "required": "false"
+    }
+  ],
+  "hints": {
+    "commonMistakes": [
+      "Parameter is maxEntries, NOT count",
+      "Parameter is logTypeFilter, NOT logType"
+    ]
+  }
+}

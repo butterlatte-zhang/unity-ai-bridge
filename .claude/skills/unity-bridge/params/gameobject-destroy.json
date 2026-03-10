@@ -1,0 +1,13 @@
+{
+  "name": "gameobject-destroy",
+  "title": "GameObject / Destroy",
+  "description": "Destroy GameObject and all nested GameObjects recursively in opened Prefab or in a Scene. Use 'gameobject-find' tool to find the target GameObject first.",
+  "parameters": [
+    {
+      "name": "gameObjectRef",
+      "type": "object",
+      "required": "true",
+      "description": "Schema: {\"name\":\"string\"} or {\"instanceID\":int} or {\"path\":\"hierarchy/path\"}"
+    }
+  ]
+}

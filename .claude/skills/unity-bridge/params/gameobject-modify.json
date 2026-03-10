@@ -1,0 +1,24 @@
+{
+  "name": "gameobject-modify",
+  "title": "GameObject / Modify",
+  "description": "Modify GameObject fields and properties in opened Prefab or in a Scene. You can modify multiple GameObjects at once. Just provide the same number of GameObject references and SerializedMember objects.",
+  "parameters": [
+    {
+      "name": "gameObjectRefs",
+      "type": "object",
+      "required": "true",
+      "description": "Array of GameObjectRef to modify. SCHEMA: [{\"name\":\"ObjectName\"}] or [{\"instanceID\":12345}]"
+    },
+    {
+      "name": "gameObjectDiffs",
+      "type": "object",
+      "description": "Array of diffs (same length as gameObjectRefs). SCHEMA: [{\"props\":[{\"name\":\"tag\",\"value\":\"EditorOnly\"}]}]",
+      "required": "true"
+    }
+  ],
+  "hints": {
+    "commonMistakes": [
+      "Parameters are gameObjectRefs + gameObjectDiffs, NOT gameObjectRef + modifications"
+    ]
+  }
+}

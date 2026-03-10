@@ -1,0 +1,39 @@
+{
+  "name": "script-execute",
+  "title": "Script / Execute",
+  "description": "Compiles and executes C# code dynamically using Roslyn. The provided code must define a class with a static method to execute.",
+  "parameters": [
+    {
+      "name": "csharpCode",
+      "type": "string",
+      "description": "C# code that compiles and executes immediately. It won't be stored as a script in the project. It is temporary one shot C# code execution using Roslyn. IMPORTANT: The code must define a class (e.g., 'public class Script') with a static method (e.g., 'public static object Main()'). Do NOT use top-level statements or code outside a class. Top-level statements are not supported and will cause compilation errors.",
+      "required": "true"
+    },
+    {
+      "name": "className",
+      "type": "string",
+      "description": "The name of the class containing the method to execute.",
+      "default": "Script",
+      "required": "false"
+    },
+    {
+      "name": "methodName",
+      "type": "string",
+      "description": "The name of the method to execute. It must be a static method in the class provided above.",
+      "default": "Main",
+      "required": "false"
+    },
+    {
+      "name": "parameters",
+      "type": "object",
+      "description": "Serialized parameters to pass to the method. If the method does not require parameters, leave this empty. Schema: [{\"name\":\"string\",\"typeName\":\"string\",\"value\":any}]",
+      "required": "false"
+    }
+  ],
+  "hints": {
+    "notes": [
+      "Code must define a class and static method; top-level statements are not supported",
+      "Default class=Script, method=Main"
+    ]
+  }
+}

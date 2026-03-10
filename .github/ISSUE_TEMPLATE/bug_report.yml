@@ -1,0 +1,99 @@
+name: Bug Report
+description: Report a bug in unity-ai-bridge
+title: "[Bug]: "
+labels: ["bug", "triage"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thank you for reporting a bug. Please fill out the form below so we can investigate.
+
+  - type: input
+    id: unity-version
+    attributes:
+      label: Unity Version
+      description: Which Unity version are you using?
+      placeholder: "e.g., 2022.3.62f1, 6000.0.36f1"
+    validations:
+      required: true
+
+  - type: dropdown
+    id: os
+    attributes:
+      label: Operating System
+      options:
+        - Windows
+        - macOS (Intel)
+        - macOS (Apple Silicon)
+        - Linux
+    validations:
+      required: true
+
+  - type: dropdown
+    id: ai-ide
+    attributes:
+      label: AI IDE / Client
+      description: Which AI coding tool are you using?
+      options:
+        - Claude Code (CLI)
+        - Cursor
+        - Windsurf
+        - VS Code + Copilot
+        - Other (specify in description)
+    validations:
+      required: true
+
+  - type: input
+    id: tool-name
+    attributes:
+      label: Tool Name
+      description: Which bridge tool is affected? Leave blank if not tool-specific.
+      placeholder: "e.g., gameobject-find, assets-modify"
+    validations:
+      required: false
+
+  - type: textarea
+    id: steps
+    attributes:
+      label: Steps to Reproduce
+      description: Provide a minimal set of steps to reproduce the issue.
+      placeholder: |
+        1. Open Unity project
+        2. Start the bridge
+        3. Call tool X with parameters Y
+        4. Observe error
+    validations:
+      required: true
+
+  - type: textarea
+    id: expected
+    attributes:
+      label: Expected Behavior
+      description: What did you expect to happen?
+    validations:
+      required: true
+
+  - type: textarea
+    id: actual
+    attributes:
+      label: Actual Behavior
+      description: What actually happened?
+    validations:
+      required: true
+
+  - type: textarea
+    id: logs
+    attributes:
+      label: Logs / Error Output
+      description: Paste any relevant logs from the Unity Console or bridge output.
+      render: shell
+    validations:
+      required: false
+
+  - type: textarea
+    id: additional
+    attributes:
+      label: Additional Context
+      description: Any other context, screenshots, or information.
+    validations:
+      required: false

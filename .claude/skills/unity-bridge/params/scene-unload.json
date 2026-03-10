@@ -1,0 +1,18 @@
+{
+  "name": "scene-unload",
+  "title": "Scene / Unload",
+  "description": "Unload scene from the Opened scenes in Unity Editor. Use 'scene-list-opened' tool to get the list of all opened scenes.",
+  "parameters": [
+    {
+      "name": "name",
+      "type": "string",
+      "description": "Name of the opened scene to unload (not the path). Get from scene-list-opened.",
+      "required": "true"
+    }
+  ],
+  "hints": {
+    "commonMistakes": [
+      "Parameter is name (string), NOT sceneRef (object)"
+    ]
+  }
+}

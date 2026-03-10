@@ -1,0 +1,30 @@
+{
+  "name": "gameobject-component-modify",
+  "title": "GameObject / Component / Modify",
+  "description": "Modify a specific Component on a GameObject in opened Prefab or in a Scene. Allows direct modification of component fields and properties without wrapping in GameObject structure. Use 'gameobject-component-get' first to inspect the component structure before modifying.",
+  "parameters": [
+    {
+      "name": "gameObjectRef",
+      "type": "object",
+      "required": "true",
+      "description": "Target GameObject. SCHEMA: {\"name\":\"ObjectName\"} or {\"instanceID\":12345}"
+    },
+    {
+      "name": "componentRef",
+      "type": "object",
+      "required": "true",
+      "description": "Component to modify. SCHEMA: {\"typeName\":\"Transform\"}"
+    },
+    {
+      "name": "componentDiff",
+      "type": "object",
+      "description": "SerializedMember diff. SCHEMA: {\"props\":[{\"name\":\"size\",\"value\":{\"x\":2,\"y\":2,\"z\":2}}],\"fields\":[...]}",
+      "required": "true"
+    }
+  ],
+  "hints": {
+    "commonMistakes": [
+      "Parameter is componentDiff, NOT jsonData"
+    ]
+  }
+}

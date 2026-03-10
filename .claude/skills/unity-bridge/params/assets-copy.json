@@ -1,0 +1,24 @@
+{
+  "name": "assets-copy",
+  "title": "Assets / Copy",
+  "description": "Copy the asset at path and stores it at newPath. Does AssetDatabase.Refresh() at the end. Use 'assets-find' tool to find assets before copying.",
+  "parameters": [
+    {
+      "name": "sourcePaths",
+      "type": "array",
+      "description": "Array of asset paths to copy. Example: [\"Assets/Materials/Mat.mat\"]",
+      "required": "true"
+    },
+    {
+      "name": "destinationPaths",
+      "type": "array",
+      "description": "Array of destination paths (same length as sourcePaths). Example: [\"Assets/Materials/MatCopy.mat\"]",
+      "required": "true"
+    }
+  ],
+  "hints": {
+    "commonMistakes": [
+      "Parameters are sourcePaths/destinationPaths (arrays), NOT sourceAssetPath/destinationAssetPath"
+    ]
+  }
+}

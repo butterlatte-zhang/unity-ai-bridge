@@ -1,0 +1,6 @@
+{
+  "name": "profiler-snapshot",
+  "title": "Profiler / Snapshot",
+  "description": "Captures a quick performance snapshot including FPS, memory usage, draw calls, triangles, and other key metrics. Useful for a quick overview of current performance status.",
+  "parameters": []
+}

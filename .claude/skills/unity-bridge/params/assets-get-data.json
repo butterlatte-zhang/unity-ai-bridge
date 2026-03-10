@@ -1,0 +1,18 @@
+{
+  "name": "assets-get-data",
+  "title": "Assets / Get Data",
+  "description": "Get asset data from the asset file in the Unity project. It includes all serializable fields and properties of the asset. Use 'assets-find' tool to find asset before using this tool.",
+  "parameters": [
+    {
+      "name": "assetRef",
+      "type": "object",
+      "required": "true",
+      "description": "Asset reference. SCHEMA: {\"assetPath\":\"Assets/path/to/asset\"} or {\"instanceID\":12345} or {\"assetGuid\":\"guid-string\"}"
+    }
+  ],
+  "hints": {
+    "commonMistakes": [
+      "Parameter is assetRef (object), NOT assetPath (string)"
+    ]
+  }
+}

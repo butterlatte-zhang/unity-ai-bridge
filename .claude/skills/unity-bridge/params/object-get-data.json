@@ -1,0 +1,13 @@
+{
+  "name": "object-get-data",
+  "title": "Object / Get Data",
+  "description": "Get data of the specified Unity Object. Returns serialized data of the object including its properties and fields. If need to modify the data use 'object-modify' tool.",
+  "parameters": [
+    {
+      "name": "objectRef",
+      "type": "object",
+      "required": "true",
+      "description": "Object reference. SCHEMA: {\"instanceID\":12345} - get instanceID from gameobject-find or editor-selection-get."
+    }
+  ]
+}

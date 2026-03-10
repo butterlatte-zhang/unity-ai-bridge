@@ -1,0 +1,31 @@
+{
+  "name": "gameobject-set-parent",
+  "title": "GameObject / Set Parent",
+  "description": "Set parent GameObject to list of GameObjects in opened Prefab or in a Scene. Use 'gameobject-find' tool to find the target GameObjects first.",
+  "parameters": [
+    {
+      "name": "gameObjectRefs",
+      "type": "object",
+      "description": "Array of GameObjectRef to reparent. SCHEMA: [{\"name\":\"ChildObject\"}]",
+      "required": "true"
+    },
+    {
+      "name": "parentGameObjectRef",
+      "type": "object",
+      "description": "New parent. SCHEMA: {\"name\":\"ParentObject\"} or {\"instanceID\":12345}. Use null to unparent.",
+      "required": "true"
+    },
+    {
+      "name": "worldPositionStays",
+      "type": "boolean",
+      "description": "A boolean flag indicating whether the GameObject's world position should remain unchanged when setting its parent.",
+      "default": "true",
+      "required": "false"
+    }
+  ],
+  "hints": {
+    "commonMistakes": [
+      "Parameter is gameObjectRefs (array), NOT gameObjectRef (single)"
+    ]
+  }
+}

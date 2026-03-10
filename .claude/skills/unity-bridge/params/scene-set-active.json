@@ -1,0 +1,13 @@
+{
+  "name": "scene-set-active",
+  "title": "Scene / Set Active",
+  "description": "Set the specified opened scene as the active scene. Use 'scene-list-opened' tool to get the list of all opened scenes.",
+  "parameters": [
+    {
+      "name": "sceneRef",
+      "type": "object",
+      "required": "true",
+      "description": "Scene asset reference. SCHEMA: {\"assetPath\":\"Assets/Scenes/MyScene.unity\"}"
+    }
+  ]
+}

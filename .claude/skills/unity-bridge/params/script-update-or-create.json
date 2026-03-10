@@ -1,0 +1,29 @@
+{
+  "name": "script-update-or-create",
+  "title": "Script / Update or Create",
+  "description": "Updates or creates script file with the provided C# code. Does AssetDatabase.Refresh() at the end. Provides compilation error details if the code has syntax errors. Use 'script-read' tool to read existing script files first.",
+  "parameters": [
+    {
+      "name": "filePath",
+      "type": "string",
+      "description": "Path to the script file. Example: \"Assets/Scripts/MyScript.cs\"",
+      "required": "true"
+    },
+    {
+      "name": "content",
+      "type": "string",
+      "description": "Full C# source code content for the file.",
+      "required": "true"
+    },
+    {
+      "name": "requestId",
+      "type": "string",
+      "required": "false"
+    }
+  ],
+  "hints": {
+    "commonMistakes": [
+      "Parameter is filePath, NOT assetPath"
+    ]
+  }
+}

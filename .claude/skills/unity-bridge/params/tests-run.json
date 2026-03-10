@@ -1,0 +1,87 @@
+{
+  "name": "tests-run",
+  "title": "Tests / Run",
+  "description": "Execute Unity tests and return detailed results. Supports filtering by test mode, assembly, namespace, class, and method. Recommended to use 'EditMode' for faster iteration during development.",
+  "parameters": [
+    {
+      "name": "testMode",
+      "type": "string",
+      "description": "Test mode to run. Options: 'EditMode', 'PlayMode'. Default: 'EditMode' Values: [EditMode, PlayMode]",
+      "default": "1",
+      "enum": "EditMode, PlayMode",
+      "required": "false"
+    },
+    {
+      "name": "testAssembly",
+      "type": "string",
+      "description": "Specific test assembly name to run (optional). Example: 'Assembly-CSharp-Editor-testable'",
+      "required": "false"
+    },
+    {
+      "name": "testNamespace",
+      "type": "string",
+      "description": "Specific test namespace to run (optional). Example: 'MyTestNamespace'",
+      "required": "false"
+    },
+    {
+      "name": "testClass",
+      "type": "string",
+      "description": "Specific test class name to run (optional). Example: 'MyTestClass'",
+      "required": "false"
+    },
+    {
+      "name": "testMethod",
+      "type": "string",
+      "description": "Specific fully qualified test method to run (optional). Example: 'MyTestNamespace.FixtureName.TestName'",
+      "required": "false"
+    },
+    {
+      "name": "includePassingTests",
+      "type": "boolean",
+      "description": "Include details for all tests, both passing and failing (default: false). If you just need details for failing tests, set to false.",
+      "default": "false",
+      "required": "false"
+    },
+    {
+      "name": "includeMessages",
+      "type": "boolean",
+      "description": "Include test result messages in the test results (default: true). If you just need pass/fail status, set to false.",
+      "default": "true",
+      "required": "false"
+    },
+    {
+      "name": "includeStacktrace",
+      "type": "boolean",
+      "description": "Include stack traces in the test results (default: false).",
+      "default": "false",
+      "required": "false"
+    },
+    {
+      "name": "includeLogs",
+      "type": "boolean",
+      "description": "Include console logs in the test results (default: false).",
+      "default": "false",
+      "required": "false"
+    },
+    {
+      "name": "logType",
+      "type": "string",
+      "description": "Log type filter for console logs. Options: 'Log', 'Warning', 'Assert', 'Error', 'Exception'. (default: 'Warning') Values: [Error, Warning, Log]",
+      "default": "2",
+      "enum": "Error, Assert, Warning, Log, Exception",
+      "required": "false"
+    },
+    {
+      "name": "includeLogsStacktrace",
+      "type": "boolean",
+      "description": "Include stack traces for console logs in the test results (default: false). This is huge amount of data, use only if really needed.",
+      "default": "false",
+      "required": "false"
+    },
+    {
+      "name": "requestId",
+      "type": "string",
+      "required": "false"
+    }
+  ]
+}

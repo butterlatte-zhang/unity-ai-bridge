@@ -1,0 +1,32 @@
+{
+  "name": "script-read",
+  "title": "Script / Read",
+  "description": "Reads the content of a script file and returns it as a string. Use 'script-update-or-create' tool to update or create script files.",
+  "parameters": [
+    {
+      "name": "filePath",
+      "type": "string",
+      "description": "Path to the script file. Example: \"Assets/Scripts/MyScript.cs\"",
+      "required": "true"
+    },
+    {
+      "name": "lineFrom",
+      "type": "integer",
+      "description": "The line number to start reading from (1-based).",
+      "default": "1",
+      "required": "false"
+    },
+    {
+      "name": "lineTo",
+      "type": "integer",
+      "description": "The line number to stop reading at (1-based, -1 for all lines).",
+      "default": "-1",
+      "required": "false"
+    }
+  ],
+  "hints": {
+    "commonMistakes": [
+      "Parameter is filePath, NOT assetPath"
+    ]
+  }
+}

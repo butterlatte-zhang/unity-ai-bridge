@@ -1,0 +1,35 @@
+{
+  "name": "profiler-frame-hierarchy",
+  "title": "Profiler / Frame Hierarchy",
+  "description": "Retrieves the full profiler call hierarchy tree for a specific frame. Returns function names, total time, self time, call counts, and GC allocations in a tree structure — equivalent to the Unity Profiler Hierarchy view. Use this to analyze detailed per-function performance.",
+  "parameters": [
+    {
+      "name": "frameIndex",
+      "type": "integer",
+      "description": "Frame index to analyze. Use -1 for the latest available frame. Default: -1",
+      "default": "-1",
+      "required": "false"
+    },
+    {
+      "name": "threadIndex",
+      "type": "integer",
+      "description": "Thread index. 0 = Main Thread, 1 = Render Thread, etc. Default: 0",
+      "default": "0",
+      "required": "false"
+    },
+    {
+      "name": "maxDepth",
+      "type": "integer",
+      "description": "Maximum depth of the call tree to return. Use smaller values for overview, larger values for detailed analysis. Default: 5",
+      "default": "5",
+      "required": "false"
+    },
+    {
+      "name": "minTotalMs",
+      "type": "number",
+      "description": "Minimum total time (ms) to include a node. Filters out insignificant calls. Default: 0.1",
+      "default": "0.100000001",
+      "required": "false"
+    }
+  ]
+}

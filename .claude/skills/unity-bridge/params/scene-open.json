@@ -1,0 +1,30 @@
+{
+  "name": "scene-open",
+  "title": "Scene / Open",
+  "description": "Open scene from the project asset file. Use 'assets-find' tool to find the scene asset first.",
+  "parameters": [
+    {
+      "name": "sceneRef",
+      "type": "object",
+      "required": "true",
+      "description": "Scene asset reference. SCHEMA: {\"assetPath\":\"Assets/Scenes/MyScene.unity\"}"
+    },
+    {
+      "name": "loadSceneMode",
+      "type": "string",
+      "description": "Load mode. ENUM: \"Single\", \"Additive\". Default: \"Single\"",
+      "default": "0",
+      "enum": "Single, Additive, AdditiveWithoutLoading",
+      "required": "false"
+    }
+  ],
+  "hints": {
+    "commonMistakes": [
+      "Parameter is sceneRef (AssetObjectRef object), NOT scenePath (string)",
+      "Parameter is loadSceneMode, NOT openSceneMode"
+    ],
+    "notes": [
+      "sceneRef format: {\"assetPath\":\"Assets/Scenes/X.unity\"}"
+    ]
+  }
+}

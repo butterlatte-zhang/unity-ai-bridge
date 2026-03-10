@@ -1,0 +1,43 @@
+{
+  "name": "editor-selection-get",
+  "title": "Editor / Selection / Get",
+  "description": "Get information about the current Selection in the Unity Editor. Use 'editor-selection-set' tool to set the selection.",
+  "parameters": [
+    {
+      "name": "includeGameObjects",
+      "type": "boolean",
+      "default": "false",
+      "required": "false"
+    },
+    {
+      "name": "includeTransforms",
+      "type": "boolean",
+      "default": "false",
+      "required": "false"
+    },
+    {
+      "name": "includeInstanceIDs",
+      "type": "boolean",
+      "default": "false",
+      "required": "false"
+    },
+    {
+      "name": "includeAssetGUIDs",
+      "type": "boolean",
+      "default": "false",
+      "required": "false"
+    },
+    {
+      "name": "includeActiveObject",
+      "type": "boolean",
+      "default": "true",
+      "required": "false"
+    },
+    {
+      "name": "includeActiveTransform",
+      "type": "boolean",
+      "default": "true",
+      "required": "false"
+    }
+  ]
+}

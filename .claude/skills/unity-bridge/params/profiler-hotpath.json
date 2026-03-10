@@ -1,0 +1,47 @@
+{
+  "name": "profiler-hotpath",
+  "title": "Profiler / Hot Path",
+  "description": "Returns the top N most expensive functions in a profiler frame, sorted by self time or total time. Useful for quickly identifying performance bottlenecks without reading the full hierarchy.",
+  "parameters": [
+    {
+      "name": "frameIndex",
+      "type": "integer",
+      "description": "Frame index to analyze. Use -1 for the latest available frame. Default: -1",
+      "default": "-1",
+      "required": "false"
+    },
+    {
+      "name": "threadIndex",
+      "type": "integer",
+      "description": "Thread index. 0 = Main Thread. Default: 0",
+      "default": "0",
+      "required": "false"
+    },
+    {
+      "name": "topN",
+      "type": "integer",
+      "description": "Number of top entries to return. Default: 20",
+      "default": "20",
+      "required": "false"
+    },
+    {
+      "name": "sortBy",
+      "type": "string",
+      "description": "Sort by 'selfTime' or 'totalTime'. Default: selfTime Values: [TotalTime, SelfTime]",
+      "default": "selfTime",
+      "required": "false"
+    },
+    {
+      "name": "maxDepth",
+      "type": "integer",
+      "description": "Maximum tree depth to scan. Deeper = more complete but slower. Default: 15",
+      "default": "15",
+      "required": "false"
+    }
+  ],
+  "hints": {
+    "commonMistakes": [
+      "Tool name is profiler-hotpath (no extra hyphen), NOT profiler-hot-path"
+    ]
+  }
+}

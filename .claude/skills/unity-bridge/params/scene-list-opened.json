@@ -1,0 +1,6 @@
+{
+  "name": "scene-list-opened",
+  "title": "Scene / List Opened",
+  "description": "Returns the list of currently opened scenes in Unity Editor. Use 'scene-get-data' tool to get detailed information about a specific scene.",
+  "parameters": []
+}
