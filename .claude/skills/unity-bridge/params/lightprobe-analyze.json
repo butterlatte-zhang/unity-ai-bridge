@@ -1,0 +1,14 @@
+{
+  "name": "lightprobe-analyze",
+  "title": "LightProbe / Analyze Scene",
+  "description": "Analyze the current scene's local lights (Point, Spot, Area) and return their influence bounds, spatial density, and recommended probe placement parameters. Directional lights are skipped as they have no localized influence. Use this before 'lightprobe-generate-grid' to determine optimal spacing.",
+  "parameters": [
+    {
+      "name": "cellSize",
+      "type": "number",
+      "description": "Grid cell size for spatial density analysis (in world units).",
+      "default": "5",
+      "required": "false"
+    }
+  ]
+}

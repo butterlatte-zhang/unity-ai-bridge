@@ -1,0 +1,27 @@
+{
+    "name": "com.aibridge.unity",
+    "version": "1.0.0",
+    "displayName": "Unity AI Bridge",
+    "description": "Remote-control Unity Editor from any AI IDE via file-based IPC. 62 tools covering scene management, GameObject/component CRUD, asset operations, prefab editing, script execution, profiling, and more. Zero external dependencies.",
+    "unity": "2022.3",
+    "license": "Apache-2.0",
+    "keywords": [
+        "ai",
+        "bridge",
+        "mcp",
+        "claude",
+        "cursor",
+        "copilot",
+        "editor-tools",
+        "automation"
+    ],
+    "author": {
+        "name": "Unity AI Bridge Contributors",
+        "url": "https://github.com/butterlatte-zhang/unity-ai-bridge"
+    },
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/butterlatte-zhang/unity-ai-bridge.git",
+        "directory": "Packages/com.aibridge.unity"
+    }
+}

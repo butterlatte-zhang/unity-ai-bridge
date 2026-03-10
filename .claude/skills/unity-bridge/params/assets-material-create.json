@@ -1,0 +1,24 @@
+{
+  "name": "assets-material-create",
+  "title": "Assets / Create Material",
+  "description": "Create new material asset with default parameters. Creates folders recursively if they do not exist. Provide proper 'shaderName' - use 'assets-shader-list-all' tool to find available shaders.",
+  "parameters": [
+    {
+      "name": "assetPath",
+      "type": "string",
+      "description": "Full path for the new material including filename. Example: \"Assets/Materials/NewMat.mat\". Parent folder must exist.",
+      "required": "true"
+    },
+    {
+      "name": "shaderName",
+      "type": "string",
+      "description": "Shader name. Example: \"Universal Render Pipeline/Lit\", \"Standard\"",
+      "required": "true"
+    }
+  ],
+  "hints": {
+    "commonMistakes": [
+      "Parameters are assetPath + shaderName, NOT materialName + savePath"
+    ]
+  }
+}

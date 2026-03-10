@@ -1,0 +1,19 @@
+{
+  "name": "scene-save",
+  "title": "Scene / Save",
+  "description": "Save Opened scene to the asset file. Use 'scene-list-opened' tool to get the list of all opened scenes.",
+  "parameters": [
+    {
+      "name": "openedSceneName",
+      "type": "string",
+      "description": "Name of the opened scene that should be saved. Could be empty if need to save the current active scene.",
+      "required": "false"
+    },
+    {
+      "name": "path",
+      "type": "string",
+      "description": "Path to the scene file. Should end with \".unity\". If null or empty save to the existed scene asset file.",
+      "required": "false"
+    }
+  ]
+}

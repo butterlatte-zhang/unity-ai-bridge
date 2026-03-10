@@ -1,0 +1,49 @@
+{
+  "name": "assets-prefab-instantiate",
+  "title": "Assets / Prefab / Instantiate",
+  "description": "Instantiates prefab in the current active scene. Use 'assets-find' tool to find prefab assets in the project.",
+  "parameters": [
+    {
+      "name": "prefabAssetPath",
+      "type": "string",
+      "description": "Path to the prefab asset. Example: \"Assets/Prefabs/MyPrefab.prefab\"",
+      "required": "true"
+    },
+    {
+      "name": "gameObjectPath",
+      "type": "string",
+      "description": "GameObject path in the current active scene.",
+      "required": "true"
+    },
+    {
+      "name": "position",
+      "type": "object",
+      "description": "Spawn position. SCHEMA: {\"x\":0,\"y\":0,\"z\":0}",
+      "required": "false"
+    },
+    {
+      "name": "rotation",
+      "type": "object",
+      "description": "Spawn rotation (Euler angles). SCHEMA: {\"x\":0,\"y\":0,\"z\":0}",
+      "required": "false"
+    },
+    {
+      "name": "scale",
+      "type": "object",
+      "description": "Scale. SCHEMA: {\"x\":1,\"y\":1,\"z\":1}",
+      "required": "false"
+    },
+    {
+      "name": "isLocalSpace",
+      "type": "boolean",
+      "description": "World or Local space of transform.",
+      "default": "false",
+      "required": "false"
+    }
+  ],
+  "hints": {
+    "commonMistakes": [
+      "Parameters are prefabAssetPath + gameObjectPath, NOT prefabRef"
+    ]
+  }
+}

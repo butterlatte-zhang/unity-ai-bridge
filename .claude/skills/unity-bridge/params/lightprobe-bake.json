@@ -1,0 +1,28 @@
+{
+  "name": "lightprobe-bake",
+  "title": "LightProbe / Bake",
+  "description": "Trigger light baking in the current scene. Bakes Light Probe data (and Lightmaps if static objects exist). Make sure lights are set to Baked or Mixed mode before baking (use 'lightprobe-configure-lights' to configure). Use 'lightprobe-analyze' and console-get-logs to verify results after baking completes.",
+  "parameters": [
+    {
+      "name": "async",
+      "type": "boolean",
+      "description": "If true, bake asynchronously (non-blocking). If false, bake synchronously (blocks editor until done).",
+      "default": "true",
+      "required": "false"
+    },
+    {
+      "name": "enableBakedGI",
+      "type": "boolean",
+      "description": "Enable Baked Global Illumination in Lighting Settings.",
+      "default": "true",
+      "required": "false"
+    },
+    {
+      "name": "enableRealtimeGI",
+      "type": "boolean",
+      "description": "Enable Realtime Global Illumination in Lighting Settings (Enlighten). Usually not needed with Baked GI.",
+      "default": "false",
+      "required": "false"
+    }
+  ]
+}

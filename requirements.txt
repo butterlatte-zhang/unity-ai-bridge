@@ -1,0 +1,5 @@
+# Unity AI Bridge CLI & MCP Server
+# No external dependencies required — uses Python stdlib only.
+#
+# For building standalone binaries:
+# pip install pyinstaller

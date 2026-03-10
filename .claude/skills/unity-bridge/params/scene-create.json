@@ -1,0 +1,27 @@
+{
+  "name": "scene-create",
+  "title": "Scene / Create",
+  "description": "Create new scene in the project assets. Use 'scene-list-opened' tool to list all opened scenes after creation.",
+  "parameters": [
+    {
+      "name": "path",
+      "type": "string",
+      "description": "Path to the scene file. Should end with \".unity\" extension.",
+      "required": "true"
+    },
+    {
+      "name": "newSceneSetup",
+      "type": "string",
+      "default": "1",
+      "required": "false",
+      "description": "Scene setup. ENUM: \"DefaultGameObjects\" (camera+light), \"EmptyScene\". Default: \"DefaultGameObjects\""
+    },
+    {
+      "name": "newSceneMode",
+      "type": "string",
+      "default": "0",
+      "required": "false",
+      "description": "Scene mode. ENUM: \"Single\" (close other scenes), \"Additive\" (keep other scenes). Default: \"Single\""
+    }
+  ]
+}

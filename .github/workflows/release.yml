@@ -1,0 +1,146 @@
+name: Release
+
+on:
+  push:
+    tags:
+      - "v*"
+
+permissions:
+  contents: write
+
+jobs:
+  release:
+    name: Create Draft Release
+    runs-on: ubuntu-latest
+    outputs:
+      tag_name: ${{ github.ref_name }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Get previous tag
+        id: prev_tag
+        run: |
+          PREV_TAG=$(git tag --sort=-version:refname | grep '^v' | sed -n '2p')
+          if [ -z "$PREV_TAG" ]; then
+            PREV_TAG=$(git rev-list --max-parents=0 HEAD)
+          fi
+          echo "tag=$PREV_TAG" >> "$GITHUB_OUTPUT"
+
+      - name: Generate changelog
+        id: changelog
+        run: |
+          {
+            echo 'changelog<<EOF'
+            echo "## What's Changed"
+            echo ""
+            git log ${{ steps.prev_tag.outputs.tag }}..${{ github.ref_name }} \
+              --pretty=format:"- %s (%h)" \
+              --no-merges
+            echo ""
+            echo ""
+            echo "**Full Changelog**: https://github.com/${{ github.repository }}/compare/${{ steps.prev_tag.outputs.tag }}...${{ github.ref_name }}"
+            echo 'EOF'
+          } >> "$GITHUB_OUTPUT"
+
+      - name: Determine pre-release
+        id: prerelease
+        run: |
+          if echo "${{ github.ref_name }}" | grep -qE '(alpha|beta|rc)'; then
+            echo "is_prerelease=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "is_prerelease=false" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Create GitHub Release (draft)
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: ${{ github.ref_name }}
+          name: ${{ github.ref_name }}
+          body: ${{ steps.changelog.outputs.changelog }}
+          draft: true
+          prerelease: ${{ steps.prerelease.outputs.is_prerelease }}
+
+  build-mac:
+    name: Build macOS Binaries
+    needs: release
+    runs-on: macos-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install PyInstaller
+        run: pip install pyinstaller==6.13.0
+
+      - name: Build macOS bridge binary
+        run: pyinstaller --onefile --name bridge-mac .claude/skills/unity-bridge/bridge.py --distpath .claude/skills/unity-bridge/bin/
+
+      - name: Build macOS MCP server binary
+        run: pyinstaller --onefile --name mcp-server-mac .claude/skills/unity-bridge/mcp_server.py --distpath .claude/skills/unity-bridge/bin/
+
+      - name: Upload artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: binaries-mac
+          path: |
+            .claude/skills/unity-bridge/bin/bridge-mac
+            .claude/skills/unity-bridge/bin/mcp-server-mac
+
+      - name: Upload to Release
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: ${{ needs.release.outputs.tag_name }}
+          files: |
+            .claude/skills/unity-bridge/bin/bridge-mac
+            .claude/skills/unity-bridge/bin/mcp-server-mac
+
+  build-windows:
+    name: Build Windows Binaries
+    needs: release
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install PyInstaller
+        run: pip install pyinstaller==6.13.0
+
+      - name: Build Windows bridge binary
+        run: pyinstaller --onefile --name bridge-win .claude/skills/unity-bridge/bridge.py --distpath .claude/skills/unity-bridge/bin/
+
+      - name: Build Windows MCP server binary
+        run: pyinstaller --onefile --name mcp-server-win .claude/skills/unity-bridge/mcp_server.py --distpath .claude/skills/unity-bridge/bin/
+
+      - name: Upload artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: binaries-win
+          path: |
+            .claude/skills/unity-bridge/bin/bridge-win.exe
+            .claude/skills/unity-bridge/bin/mcp-server-win.exe
+
+      - name: Upload to Release
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: ${{ needs.release.outputs.tag_name }}
+          files: |
+            .claude/skills/unity-bridge/bin/bridge-win.exe
+            .claude/skills/unity-bridge/bin/mcp-server-win.exe
+
+  publish:
+    name: Publish Release
+    needs: [release, build-mac, build-windows]
+    runs-on: ubuntu-latest
+    steps:
+      - name: Publish release (remove draft)
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: ${{ needs.release.outputs.tag_name }}
+          draft: false

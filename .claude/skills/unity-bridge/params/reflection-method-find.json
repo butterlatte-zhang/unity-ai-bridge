@@ -1,0 +1,41 @@
+{
+  "name": "reflection-method-find",
+  "title": "Method C# / Find",
+  "description": "Find method in the project using C# Reflection. It looks for all assemblies in the project and finds method by its name, class name and parameters. Even private methods are available. Use 'reflection-method-call' to call the method after finding it.",
+  "parameters": [
+    {
+      "name": "filter",
+      "type": "object",
+      "required": "true",
+      "description": "Method filter. SCHEMA: {\"namespace\":\"UnityEngine\",\"typeName\":\"Application\",\"methodName\":\"get_dataPath\",\"inputParameters\":[]}"
+    },
+    {
+      "name": "knownNamespace",
+      "type": "boolean",
+      "description": "Set to true if 'Namespace' is known and full namespace name is specified in the 'filter.Namespace' property. Otherwise, set to false.",
+      "default": "false",
+      "required": "false"
+    },
+    {
+      "name": "typeNameMatchLevel",
+      "type": "integer",
+      "description": "Minimal match level for 'typeName'. 0 - ignore 'filter.typeName', 1 - contains ignoring case (default value), 2 - contains case sensitive, 3 - starts with ignoring case, 4 - starts with case sensitive, 5 - equals ignoring case, 6 - equals case sensitive.",
+      "default": "1",
+      "required": "false"
+    },
+    {
+      "name": "methodNameMatchLevel",
+      "type": "integer",
+      "description": "Minimal match level for 'MethodName'. 0 - ignore 'filter.MethodName', 1 - contains ignoring case (default value), 2 - contains case sensitive, 3 - starts with ignoring case, 4 - starts with case sensitive, 5 - equals ignoring case, 6 - equals case sensitive.",
+      "default": "1",
+      "required": "false"
+    },
+    {
+      "name": "parametersMatchLevel",
+      "type": "integer",
+      "description": "Minimal match level for 'Parameters'. 0 - ignore 'filter.Parameters' (default value), 1 - parameters count is the same, 2 - equals.",
+      "default": "0",
+      "required": "false"
+    }
+  ]
+}

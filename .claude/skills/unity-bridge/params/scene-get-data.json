@@ -1,0 +1,41 @@
+{
+  "name": "scene-get-data",
+  "title": "Scene / Get Data",
+  "description": "This tool retrieves the list of root GameObjects in the specified scene. Use 'scene-list-opened' tool to get the list of all opened scenes.",
+  "parameters": [
+    {
+      "name": "openedSceneName",
+      "type": "string",
+      "description": "Name of the opened scene. If empty or null, the active scene will be used.",
+      "required": "false"
+    },
+    {
+      "name": "includeRootGameObjects",
+      "type": "boolean",
+      "description": "If true, includes root GameObjects in the scene data.",
+      "default": "false",
+      "required": "false"
+    },
+    {
+      "name": "includeChildrenDepth",
+      "type": "integer",
+      "description": "Determines the depth of the hierarchy to include.",
+      "default": "3",
+      "required": "false"
+    },
+    {
+      "name": "includeBounds",
+      "type": "boolean",
+      "description": "If true, includes bounding box information for GameObjects.",
+      "default": "false",
+      "required": "false"
+    },
+    {
+      "name": "includeData",
+      "type": "boolean",
+      "description": "If true, includes component data for GameObjects.",
+      "default": "false",
+      "required": "false"
+    }
+  ]
+}

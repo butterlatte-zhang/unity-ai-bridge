@@ -1,0 +1,23 @@
+{
+  "name": "package-add",
+  "title": "Package Manager / Add",
+  "description": "Install a package from the Unity Package Manager registry, Git URL, or local path. This operation modifies the project's manifest.json and triggers package resolution. Note: Package installation may trigger a domain reload. The result will be sent after the reload completes. Use 'package-search' tool to search for packages and 'package-list' to list installed packages.",
+  "parameters": [
+    {
+      "name": "packageId",
+      "type": "string",
+      "description": "The package ID to install. Formats: Package ID 'com.unity.textmeshpro' (installs latest compatible version), Package ID with version 'com.unity.textmeshpro@3.0.6', Git URL 'https://github.com/user/repo.git', Git URL with branch/tag 'https://github.com/user/repo.git#v1.0.0', Local path 'file:../MyPackage'.",
+      "required": "true"
+    },
+    {
+      "name": "requestId",
+      "type": "string",
+      "required": "false"
+    }
+  ],
+  "hints": {
+    "commonMistakes": [
+      "Parameter is packageId, NOT packageIdOrUrl"
+    ]
+  }
+}

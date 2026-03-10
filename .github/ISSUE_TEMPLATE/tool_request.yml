@@ -1,0 +1,72 @@
+name: Tool Request
+description: Request a new bridge tool
+title: "[Tool]: "
+labels: ["tool-request"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Suggest a new tool to be added to the bridge. Tools expose Unity Editor functionality to AI coding assistants.
+
+  - type: input
+    id: tool-name
+    attributes:
+      label: Tool Name
+      description: Proposed name following the `category-action` convention.
+      placeholder: "e.g., animation-play, navmesh-bake, terrain-set-height"
+    validations:
+      required: true
+
+  - type: dropdown
+    id: category
+    attributes:
+      label: Category
+      description: Which category does this tool belong to?
+      options:
+        - gameobject
+        - assets
+        - scene
+        - editor
+        - console
+        - script
+        - package
+        - tests
+        - profiler
+        - reflection
+        - lightprobe
+        - animation
+        - physics
+        - rendering
+        - other
+    validations:
+      required: true
+
+  - type: textarea
+    id: description
+    attributes:
+      label: Description
+      description: What should this tool do? Include expected parameters and return values.
+      placeholder: |
+        Parameters:
+        - paramName (string): description
+
+        Returns:
+        - Description of expected output
+    validations:
+      required: true
+
+  - type: textarea
+    id: use-case
+    attributes:
+      label: Use Case
+      description: When and why would an AI assistant need this tool?
+    validations:
+      required: false
+
+  - type: checkboxes
+    id: willing
+    attributes:
+      label: Contribution
+      options:
+        - label: I am willing to implement this tool and submit a PR
+          required: false

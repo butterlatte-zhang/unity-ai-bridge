@@ -1,0 +1,48 @@
+{
+  "name": "gameobject-find",
+  "title": "GameObject / Find",
+  "description": "Finds specific GameObject by provided information in opened Prefab or in a Scene. First it looks for the opened Prefab, if any Prefab is opened it looks only there ignoring a scene. If no opened Prefab it looks into current active scene. Returns GameObject information and its children. Also, it returns Components preview just for the target GameObject.",
+  "parameters": [
+    {
+      "name": "gameObjectRef",
+      "type": "object",
+      "required": "true",
+      "description": "GameObject reference. SCHEMA: {\"name\":\"Main Camera\"} or {\"instanceID\":12345} or {\"path\":\"Canvas/Panel/Button\"}"
+    },
+    {
+      "name": "includeData",
+      "type": "boolean",
+      "description": "Include editable GameObject data (tag, layer, etc).",
+      "default": "false",
+      "required": "false"
+    },
+    {
+      "name": "includeComponents",
+      "type": "boolean",
+      "description": "Include attached components references.",
+      "default": "false",
+      "required": "false"
+    },
+    {
+      "name": "includeBounds",
+      "type": "boolean",
+      "description": "Include 3D bounds of the GameObject.",
+      "default": "false",
+      "required": "false"
+    },
+    {
+      "name": "includeHierarchy",
+      "type": "boolean",
+      "description": "Include hierarchy metadata.",
+      "default": "false",
+      "required": "false"
+    },
+    {
+      "name": "hierarchyDepth",
+      "type": "integer",
+      "description": "Determines the depth of the hierarchy to include. 0 - means only the target GameObject. 1 - means to include one layer below.",
+      "default": "0",
+      "required": "false"
+    }
+  ]
+}

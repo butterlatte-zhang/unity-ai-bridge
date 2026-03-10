@@ -1,0 +1,24 @@
+{
+  "name": "object-modify",
+  "title": "Object / Modify",
+  "description": "Modify the specified Unity Object. Allows direct modification of object fields and properties. Use 'object-get-data' first to inspect the object structure before modifying.",
+  "parameters": [
+    {
+      "name": "objectRef",
+      "type": "object",
+      "required": "true",
+      "description": "Object reference. SCHEMA: {\"instanceID\":12345}"
+    },
+    {
+      "name": "objectDiff",
+      "type": "object",
+      "description": "SerializedMember diff. SCHEMA: {\"props\":[{\"name\":\"propertyName\",\"value\":any}],\"fields\":[...]}",
+      "required": "true"
+    }
+  ],
+  "hints": {
+    "commonMistakes": [
+      "Parameter is objectDiff, NOT jsonData"
+    ]
+  }
+}

@@ -1,0 +1,23 @@
+{
+  "name": "script-delete",
+  "title": "Script / Delete",
+  "description": "Delete the script file(s). Does AssetDatabase.Refresh() and waits for Unity compilation to complete before reporting results. Use 'script-read' tool to read existing script files first.",
+  "parameters": [
+    {
+      "name": "files",
+      "type": "array",
+      "description": "Array of file paths to delete. Example: [\"Assets/Scripts/Old.cs\"]",
+      "required": "true"
+    },
+    {
+      "name": "requestId",
+      "type": "string",
+      "required": "false"
+    }
+  ],
+  "hints": {
+    "commonMistakes": [
+      "Parameter is files (array), NOT assetPath (string)"
+    ]
+  }
+}

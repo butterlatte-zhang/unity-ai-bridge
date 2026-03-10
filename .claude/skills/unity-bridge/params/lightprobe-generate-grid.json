@@ -1,0 +1,56 @@
+{
+  "name": "lightprobe-generate-grid",
+  "title": "LightProbe / Generate Grid",
+  "description": "Generate Light Probes in a 3D grid within local light influence ranges. Supports density gradient: denser probes near light centers, sparser at edges. Scans Point/Spot/Area lights, skips Directional lights. Uses raycasting to find ground level and Physics.CheckSphere to avoid placing probes inside geometry. Use 'lightprobe-analyze' first to get recommended spacing values.",
+  "parameters": [
+    {
+      "name": "spacingXZ",
+      "type": "number",
+      "description": "Horizontal spacing between probes. Default: 3",
+      "default": "3",
+      "required": "false"
+    },
+    {
+      "name": "spacingY",
+      "type": "number",
+      "description": "Vertical spacing between probes. Default: 2",
+      "default": "2",
+      "required": "false"
+    },
+    {
+      "name": "heightLevels",
+      "type": "integer",
+      "description": "Number of vertical layers of probes above ground.",
+      "default": "3",
+      "required": "false"
+    },
+    {
+      "name": "groundOffset",
+      "type": "number",
+      "description": "Height offset from ground for the first probe layer.",
+      "default": "0.5",
+      "required": "false"
+    },
+    {
+      "name": "groupName",
+      "type": "string",
+      "description": "Name of the LightProbeGroup GameObject to create.",
+      "default": "LightProbeGroup_Auto",
+      "required": "false"
+    },
+    {
+      "name": "insideCheckRadius",
+      "type": "number",
+      "description": "Radius for CheckSphere to reject probes inside geometry. Set to 0 to disable.",
+      "default": "0.300000012",
+      "required": "false"
+    },
+    {
+      "name": "useDensityGradient",
+      "type": "boolean",
+      "description": "Enable density gradient: denser probes near light centers (d<0.4 range → half spacing), standard spacing at mid-range (0.4-0.8), sparser at edges (>0.8 → double spacing). When false, uses uniform spacingXZ everywhere.",
+      "default": "true",
+      "required": "false"
+    }
+  ]
+}

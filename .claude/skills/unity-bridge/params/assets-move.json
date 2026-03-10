@@ -1,0 +1,24 @@
+{
+  "name": "assets-move",
+  "title": "Assets / Move",
+  "description": "Move the assets at paths in the project. Should be used for asset rename. Does AssetDatabase.Refresh() at the end. Use 'assets-find' tool to find assets before moving.",
+  "parameters": [
+    {
+      "name": "sourcePaths",
+      "type": "array",
+      "description": "Array of source asset paths. Example: [\"Assets/old.mat\"]",
+      "required": "true"
+    },
+    {
+      "name": "destinationPaths",
+      "type": "array",
+      "description": "Array of destination paths. Example: [\"Assets/new.mat\"]",
+      "required": "true"
+    }
+  ],
+  "hints": {
+    "commonMistakes": [
+      "Parameters are sourcePaths/destinationPaths (arrays), NOT single paths"
+    ]
+  }
+}

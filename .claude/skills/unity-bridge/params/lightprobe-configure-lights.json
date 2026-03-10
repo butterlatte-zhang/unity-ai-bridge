@@ -1,0 +1,24 @@
+{
+  "name": "lightprobe-configure-lights",
+  "title": "LightProbe / Configure Lights",
+  "description": "Batch-configure Light bake modes in the scene. Each entry specifies a name pattern (supports * wildcard) and a target mode (Realtime, Baked, Mixed). Use 'lightprobe-analyze' first to inspect all lights and their current modes, then decide which lights to change based on the analysis.",
+  "parameters": [
+    {
+      "name": "lights",
+      "type": "array",
+      "description": "Array of light configurations. SCHEMA: [{\"namePattern\":\"Directional*\",\"mode\":\"Mixed\"}]",
+      "required": "true"
+    }
+  ],
+  "hints": {
+    "commonMistakes": [
+      "Parameter is namePattern (string, supports * wildcards), NOT gameObjectRef (object)",
+      "No intensity field; only namePattern and mode"
+    ],
+    "notes": [
+      "mode values: Realtime, Baked, Mixed",
+      "namePattern supports wildcards: 'StreetLight*', '*_Spot', '*' (matches all)",
+      "Use lightprobe-analyze first to inspect current light configuration before modifying"
+    ]
+  }
+}

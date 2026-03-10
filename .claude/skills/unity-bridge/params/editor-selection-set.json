@@ -1,0 +1,18 @@
+{
+  "name": "editor-selection-set",
+  "title": "Editor / Selection / Set",
+  "description": "Set the current Selection in the Unity Editor to the provided objects. Use 'editor-selection-get' tool to get the current selection first.",
+  "parameters": [
+    {
+      "name": "select",
+      "type": "array",
+      "required": "true",
+      "description": "Array of ObjectRef to select. SCHEMA: [{\"instanceID\":12345}]. Get instanceID from gameobject-find or editor-selection-get first."
+    }
+  ],
+  "hints": {
+    "commonMistakes": [
+      "Parameter is select, NOT objectRefs"
+    ]
+  }
+}

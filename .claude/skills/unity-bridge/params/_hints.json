@@ -1,0 +1,175 @@
+{
+  "scene-open": {
+    "commonMistakes": [
+      "Parameter is sceneRef (AssetObjectRef object), NOT scenePath (string)",
+      "Parameter is loadSceneMode, NOT openSceneMode"
+    ],
+    "notes": [
+      "sceneRef format: {\"assetPath\":\"Assets/Scenes/X.unity\"}"
+    ]
+  },
+  "scene-unload": {
+    "commonMistakes": [
+      "Parameter is name (string), NOT sceneRef (object)"
+    ]
+  },
+  "gameobject-duplicate": {
+    "commonMistakes": [
+      "Parameter is gameObjectRefs (array), NOT gameObjectRef (single)"
+    ]
+  },
+  "gameobject-set-parent": {
+    "commonMistakes": [
+      "Parameter is gameObjectRefs (array), NOT gameObjectRef (single)"
+    ]
+  },
+  "gameobject-modify": {
+    "commonMistakes": [
+      "Parameters are gameObjectRefs + gameObjectDiffs, NOT gameObjectRef + modifications"
+    ]
+  },
+  "gameobject-component-add": {
+    "commonMistakes": [
+      "Parameter is componentNames (array), NOT componentType (string)"
+    ]
+  },
+  "gameobject-component-destroy": {
+    "commonMistakes": [
+      "Parameter is destroyComponentRefs (array), NOT componentRef (single)"
+    ]
+  },
+  "gameobject-component-modify": {
+    "commonMistakes": [
+      "Parameter is componentDiff, NOT jsonData"
+    ]
+  },
+  "assets-create-folder": {
+    "commonMistakes": [
+      "Tool name is assets-create-folder (singular), NOT assets-create-folders"
+    ],
+    "notes": [
+      "Parameter inputs is an array: [{\"parentFolderPath\":\"Assets\",\"newFolderName\":\"Folder\"}]"
+    ]
+  },
+  "assets-material-create": {
+    "commonMistakes": [
+      "Parameters are assetPath + shaderName, NOT materialName + savePath"
+    ]
+  },
+  "assets-get-data": {
+    "commonMistakes": [
+      "Parameter is assetRef (object), NOT assetPath (string)"
+    ]
+  },
+  "assets-modify": {
+    "commonMistakes": [
+      "Parameter is content, NOT jsonData"
+    ]
+  },
+  "assets-copy": {
+    "commonMistakes": [
+      "Parameters are sourcePaths/destinationPaths (arrays), NOT sourceAssetPath/destinationAssetPath"
+    ]
+  },
+  "assets-move": {
+    "commonMistakes": [
+      "Parameters are sourcePaths/destinationPaths (arrays), NOT single paths"
+    ]
+  },
+  "assets-delete": {
+    "commonMistakes": [
+      "Parameter is paths (array), NOT assetPath (string)"
+    ]
+  },
+  "assets-prefab-create": {
+    "commonMistakes": [
+      "Parameter is prefabAssetPath, NOT savePath"
+    ]
+  },
+  "assets-prefab-open": {
+    "commonMistakes": [
+      "Parameter is gameObjectRef{assetPath} (object), NOT prefabAssetPath (string)"
+    ]
+  },
+  "assets-prefab-instantiate": {
+    "commonMistakes": [
+      "Parameters are prefabAssetPath + gameObjectPath, NOT prefabRef"
+    ]
+  },
+  "script-update-or-create": {
+    "commonMistakes": [
+      "Parameter is filePath, NOT assetPath"
+    ]
+  },
+  "script-read": {
+    "commonMistakes": [
+      "Parameter is filePath, NOT assetPath"
+    ]
+  },
+  "script-delete": {
+    "commonMistakes": [
+      "Parameter is files (array), NOT assetPath (string)"
+    ]
+  },
+  "script-execute": {
+    "notes": [
+      "Code must define a class and static method; top-level statements are not supported",
+      "Default class=Script, method=Main"
+    ]
+  },
+  "object-modify": {
+    "commonMistakes": [
+      "Parameter is objectDiff, NOT jsonData"
+    ]
+  },
+  "editor-selection-set": {
+    "commonMistakes": [
+      "Parameter is select, NOT objectRefs"
+    ]
+  },
+  "console-get-logs": {
+    "commonMistakes": [
+      "Parameter is maxEntries, NOT count",
+      "Parameter is logTypeFilter, NOT logType"
+    ]
+  },
+  "package-search": {
+    "commonMistakes": [
+      "Parameter is query, NOT searchQuery"
+    ]
+  },
+  "package-add": {
+    "commonMistakes": [
+      "Parameter is packageId, NOT packageIdOrUrl"
+    ]
+  },
+  "profiler-hotpath": {
+    "commonMistakes": [
+      "Tool name is profiler-hotpath (no extra hyphen), NOT profiler-hot-path"
+    ]
+  },
+  "reflection-method-call": {
+    "notes": [
+      "When calling a no-args method, set parametersMatchLevel:0 (default 2 requires strict parameter matching)",
+      "typeName supports fully qualified names (UnityEngine.Application), auto-split into namespace + short name"
+    ]
+  },
+  "lightprobe-configure-lights": {
+    "commonMistakes": [
+      "Parameter is namePattern (string, supports * wildcards), NOT gameObjectRef (object)",
+      "No intensity field; only namePattern and mode"
+    ],
+    "notes": [
+      "mode values: Realtime, Baked, Mixed",
+      "namePattern supports wildcards: 'StreetLight*', '*_Spot', '*' (matches all)",
+      "Use lightprobe-analyze first to inspect current light configuration before modifying"
+    ]
+  },
+  "gameobject-component-list-all": {
+    "notes": [
+      "Pass gameObjectRef to list components on an object; omit to list all available component types in the project",
+      "Format when listing object components: 'TypeName (instanceID: 123, index: 0)'",
+      "Prefer using instanceID (more reliable); name resolution may fail on newly created objects or during scene loading"
+    ]
+  }
+}

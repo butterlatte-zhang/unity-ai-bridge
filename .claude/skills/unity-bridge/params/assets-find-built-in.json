@@ -1,0 +1,26 @@
+{
+  "name": "assets-find-built-in",
+  "title": "Assets / Find (Built-in)",
+  "description": "Search the built-in assets of the Unity Editor located in the built-in resources: Resources/unity_builtin_extra. Doesn't support GUIDs since built-in assets do not have them.",
+  "parameters": [
+    {
+      "name": "name",
+      "type": "string",
+      "description": "The name of the asset to filter by.",
+      "required": "false"
+    },
+    {
+      "name": "type",
+      "type": "object",
+      "description": "The type of the asset to filter by. Schema: \"Material\" or \"Shader\" or \"Texture2D\" etc. (Unity asset type name)",
+      "required": "false"
+    },
+    {
+      "name": "maxResults",
+      "type": "integer",
+      "description": "Maximum number of assets to return. If the number of found assets exceeds this limit, the result will be truncated.",
+      "default": "10",
+      "required": "false"
+    }
+  ]
+}

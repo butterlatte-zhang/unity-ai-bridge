@@ -1,0 +1,42 @@
+{
+  "name": "profiler-stream",
+  "title": "Profiler / Stream",
+  "description": "Multi-frame continuous Profiler sampling (snapshot + GC + hotpath + call counts). Writes JSONL summary file and outputs aggregated statistics (with P95/P99 percentiles) on completion. Supports fixed-frame and continuous modes. Auto-loads threshold fences; takes screenshot on violation.",
+  "parameters": [
+    {
+      "name": "frames",
+      "type": "integer",
+      "description": "Number of frames to sample. 0 or negative = continuous mode (returns immediately, samples in background until stop signal). Default: 0",
+      "default": "0",
+      "required": "false"
+    },
+    {
+      "name": "frameInterval",
+      "type": "integer",
+      "description": "Frame interval (Unity frames to skip between samples). Default: 2",
+      "default": "2",
+      "required": "false"
+    },
+    {
+      "name": "gcTopN",
+      "type": "integer",
+      "description": "Top N GC allocations per frame. Default: 20",
+      "default": "20",
+      "required": "false"
+    },
+    {
+      "name": "hotpathTopN",
+      "type": "integer",
+      "description": "Top N hotpath functions per frame. Default: 20",
+      "default": "20",
+      "required": "false"
+    },
+    {
+      "name": "hierarchyMaxDepth",
+      "type": "integer",
+      "description": "Maximum call hierarchy depth. Default: 8",
+      "default": "8",
+      "required": "false"
+    }
+  ]
+}

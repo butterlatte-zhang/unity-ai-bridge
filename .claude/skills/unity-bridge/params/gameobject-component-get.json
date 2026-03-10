@@ -1,0 +1,40 @@
+{
+  "name": "gameobject-component-get",
+  "title": "GameObject / Component / Get",
+  "description": "Get detailed information about a specific Component on a GameObject. Returns component type, enabled state, and optionally serialized fields and properties. Use this to inspect component data before modifying it. Use 'gameobject-find' tool to get the list of all components on the GameObject.",
+  "parameters": [
+    {
+      "name": "gameObjectRef",
+      "type": "object",
+      "required": "true",
+      "description": "Target GameObject. SCHEMA: {\"name\":\"ObjectName\"} or {\"instanceID\":12345}"
+    },
+    {
+      "name": "componentRef",
+      "type": "object",
+      "required": "true",
+      "description": "Component to get. SCHEMA: {\"typeName\":\"Transform\"} or {\"typeName\":\"BoxCollider\",\"index\":0}"
+    },
+    {
+      "name": "includeFields",
+      "type": "boolean",
+      "description": "Include serialized fields of the component.",
+      "default": "true",
+      "required": "false"
+    },
+    {
+      "name": "includeProperties",
+      "type": "boolean",
+      "description": "Include serialized properties of the component.",
+      "default": "true",
+      "required": "false"
+    },
+    {
+      "name": "deepSerialization",
+      "type": "boolean",
+      "description": "Performs deep serialization including all nested objects. Otherwise, only serializes top-level members.",
+      "default": "false",
+      "required": "false"
+    }
+  ]
+}

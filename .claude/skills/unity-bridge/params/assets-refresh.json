@@ -1,0 +1,14 @@
+{
+  "name": "assets-refresh",
+  "title": "Assets / Refresh",
+  "description": "Refreshes the AssetDatabase. Use it if any file was added or updated in the project outside of Unity API. Use it if need to force scripts recompilation when '.cs' file changed.",
+  "parameters": [
+    {
+      "name": "options",
+      "type": "string",
+      "default": "8",
+      "required": "false",
+      "description": "Import options. ENUM: \"Default\", \"ForceUpdate\", \"ForceSynchronousImport\", \"ImportRecursive\", \"DontDownloadFromCacheServer\", \"ForceUncompressedImport\". Default: \"ForceSynchronousImport\". Accepts string name or integer value."
+    }
+  ]
+}

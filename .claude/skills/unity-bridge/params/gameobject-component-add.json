@@ -1,0 +1,24 @@
+{
+  "name": "gameobject-component-add",
+  "title": "GameObject / Component / Add",
+  "description": "Add Component to GameObject in opened Prefab or in a Scene. Use 'gameobject-find' tool to find the target GameObject first. Use 'gameobject-component-list-all' tool to find the component type names to add.",
+  "parameters": [
+    {
+      "name": "componentNames",
+      "type": "array",
+      "description": "Array of component type names to add. Example: [\"BoxCollider\",\"Rigidbody\"]",
+      "required": "true"
+    },
+    {
+      "name": "gameObjectRef",
+      "type": "object",
+      "required": "true",
+      "description": "Target GameObject. SCHEMA: {\"name\":\"ObjectName\"} or {\"instanceID\":12345} or {\"path\":\"hierarchy/path\"}"
+    }
+  ],
+  "hints": {
+    "commonMistakes": [
+      "Parameter is componentNames (array), NOT componentType (string)"
+    ]
+  }
+}
