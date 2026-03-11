@@ -9,7 +9,7 @@
 [![GitHub stars](https://img.shields.io/github/stars/butterlatte-zhang/unity-ai-bridge?style=social)](https://github.com/butterlatte-zhang/unity-ai-bridge/stargazers)
 [![Release](https://img.shields.io/github/v/release/butterlatte-zhang/unity-ai-bridge)](https://github.com/butterlatte-zhang/unity-ai-bridge/releases)
 
-https://github.com/butterlatte-zhang/unity-ai-bridge/releases/download/v1.0.0/unity-ai-bridge-profiler-demo.mp4
+<video src="https://github.com/butterlatte-zhang/unity-ai-bridge/releases/download/v1.0.0/unity-ai-bridge-profiler-demo.mp4" controls width="100%"></video>
 
 ---
 
