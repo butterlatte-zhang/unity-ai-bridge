@@ -27,6 +27,20 @@ Most AI coding assistants can read and write files, but they are **blind to the 
 - **5-line extensibility** — Add custom tools with `[BridgeTool]` attribute. Auto-discovered, auto-serialized, auto-documented. No registration code needed.
 - **Production-tested** — Built for and battle-tested in a large-scale open-world Unity game (50+ developers, 2M+ lines of C#).
 
+### vs Unity 6 AI Gateway
+
+Unity 6.2 introduced an official [AI Gateway](https://docs.unity3d.com/6000.2/Documentation/Manual/ai-gateway.html) with MCP support. Both projects share the same goal — giving AI agents editor access via MCP — but differ in important ways:
+
+| | Unity AI Bridge | Unity 6 AI Gateway |
+|---|---|---|
+| **Unity version** | 2022.3 LTS+ | 6.2+ only |
+| **Tool coverage** | 62 tools across 13 categories | General-purpose (Scene, Assets, Script, Console) |
+| **Deep tooling** | Profiler (snapshot, hotpath, stream), LightProbe, Reflection, Package Manager | Not yet available |
+| **IPC mechanism** | File polling (~100ms) | Unix Socket / Named Pipe |
+| **Extensibility** | `[BridgeTool]` attribute — 5 lines | TBD |
+
+In practice, the ~100ms file-polling latency is imperceptible because AI agent think-time dominates each round trip. File IPC also makes cross-process debugging trivial — just inspect the JSON files on disk.
+
 ---
 
 ## Quick Start

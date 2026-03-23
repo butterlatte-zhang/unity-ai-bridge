@@ -27,6 +27,20 @@ https://github.com/user-attachments/assets/4e8b3f85-b209-406f-a96e-f8b8eddc9160
 - **5 行代码可扩展** — 用 `[BridgeTool]` 属性添加自定义工具。自动发现、自动序列化、自动文档化，无需注册代码。
 - **生产验证** — 在大型开放世界 Unity 游戏中实战验证（50+ 开发者，200 万+ 行 C#）。
 
+### 对比 Unity 6 AI Gateway
+
+Unity 6.2 推出了官方的 [AI Gateway](https://docs.unity3d.com/6000.2/Documentation/Manual/ai-gateway.html)，同样支持 MCP 协议。两者目标一致——让 AI Agent 访问编辑器——但存在关键差异：
+
+| | Unity AI Bridge | Unity 6 AI Gateway |
+|---|---|---|
+| **Unity 版本** | 2022.3 LTS+ | 仅 6.2+ |
+| **工具覆盖** | 62 个工具，13 个分类 | 通用工具（场景、资源、脚本、控制台） |
+| **深度工具** | Profiler（快照、热点路径、流式）、光照探针、反射调用、包管理 | 暂未提供 |
+| **IPC 机制** | 文件轮询（~100ms） | Unix Socket / Named Pipe |
+| **可扩展性** | `[BridgeTool]` 属性 — 5 行代码 | 待定 |
+
+实际使用中，~100ms 的文件轮询延迟几乎无感，因为 AI Agent 的思考时间远大于此。文件 IPC 还有一个额外优势：跨进程调试极其简单，直接查看磁盘上的 JSON 文件即可。
+
 ---
 
 ## 快速开始
