@@ -56,7 +56,7 @@ namespace UnityAiBridge.Editor.Tools
             try
             {
                 using var recorder = ProfilerRecorder.StartNew(category, name, 1);
-                value = recorder.CurrentValue;
+                value = recorder.LastValue;
             }
             catch
             {
