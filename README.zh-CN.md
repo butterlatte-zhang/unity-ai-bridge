@@ -8,6 +8,7 @@
 [![License: Apache 2.0](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](LICENSE)
 [![GitHub stars](https://img.shields.io/github/stars/butterlatte-zhang/unity-ai-bridge?style=social)](https://github.com/butterlatte-zhang/unity-ai-bridge/stargazers)
 [![Release](https://img.shields.io/github/v/release/butterlatte-zhang/unity-ai-bridge)](https://github.com/butterlatte-zhang/unity-ai-bridge/releases)
+[![Glama](https://glama.ai/mcp/servers/butterlatte-zhang/unity-ai-bridge/badges/score.svg)](https://glama.ai/mcp/servers/butterlatte-zhang/unity-ai-bridge)
 
 https://github.com/user-attachments/assets/4e8b3f85-b209-406f-a96e-f8b8eddc9160
 
