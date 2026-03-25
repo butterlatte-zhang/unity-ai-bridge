@@ -20,7 +20,7 @@ Most AI coding assistants can read and write files, but they are **blind to the 
 
 ### Key Advantages
 
-- **62 tools, 13 categories** — Scene, GameObject, Assets, Prefab, Script, Profiler, LightProbe, Tests, and more. Covers the full editor workflow, not just file I/O.
+- **65 tools, 15 categories** — Scene, GameObject, Assets, Prefab, Script, Profiler, LightProbe, Screenshot, Runtime, Tests, and more. Covers the full editor workflow, not just file I/O.
 - **File-based IPC, not WebSocket** — No open ports, no firewall issues, no connection drops. Survives recompilation, play-mode transitions, and editor restarts gracefully.
 - **Zero external dependencies** — Pure Python stdlib CLI/MCP server, self-contained C# Unity package. No pip install, no npm, no Node.js runtime.
 - **Every major AI IDE** — Claude Code (Skill mode), Cursor, GitHub Copilot, Windsurf, Claude Desktop (MCP mode). One Unity plugin, all IDEs.
@@ -34,7 +34,7 @@ Unity 6.2 introduced an official [AI Gateway](https://docs.unity3d.com/6000.2/Do
 | | Unity AI Bridge | Unity 6 AI Gateway |
 |---|---|---|
 | **Unity version** | 2022.3 LTS+ | 6.2+ only |
-| **Tool coverage** | 62 tools across 13 categories | General-purpose (Scene, Assets, Script, Console) |
+| **Tool coverage** | 65 tools across 15 categories | General-purpose (Scene, Assets, Script, Console) |
 | **Deep tooling** | Profiler (snapshot, hotpath, stream), LightProbe, Reflection, Package Manager | Not yet available |
 | **IPC mechanism** | File polling (~100ms) | Unix Socket / Named Pipe |
 | **Extensibility** | `[BridgeTool]` attribute — 5 lines | TBD |
@@ -68,7 +68,7 @@ Supports: Claude Code (Skill mode), Cursor, GitHub Copilot, Windsurf, Claude Des
 
 ## Tool Categories
 
-62 tools organized into 13 categories:
+65 tools organized into 15 categories:
 
 | Category | Count | Tools |
 |----------|:-----:|-------|
@@ -80,6 +80,8 @@ Supports: Claude Code (Skill mode), Cursor, GitHub Copilot, Windsurf, Claude Des
 | **Object** | 2 | `object-get-data`, `object-modify` |
 | **Editor** | 4 | `editor-application-get-state`, `editor-application-set-state`, `editor-selection-get`, `editor-selection-set` |
 | **Reflection** | 2 | `reflection-method-find`, `reflection-method-call` |
+| **Screenshot** | 1 | `screenshot-capture` |
+| **Runtime** | 2 | `runtime-query`, `runtime-invoke` |
 | **Console** | 1 | `console-get-logs` |
 | **Profiler** | 5 | `profiler-snapshot`, `profiler-stream`, `profiler-frame-hierarchy`, `profiler-hotpath`, `profiler-gc-alloc` |
 | **Package** | 4 | `package-list`, `package-search`, `package-add`, `package-remove` |
@@ -124,6 +126,41 @@ Supports: Claude Code (Skill mode), Cursor, GitHub Copilot, Windsurf, Claude Des
 **Dual-channel design**: The same Unity plugin serves both Skill mode (direct CLI) and MCP mode (protocol server). Both channels communicate through the same file-based IPC — a pair of request/response files on disk. No network sockets, no port conflicts, no firewall rules.
 
 **Why file IPC?** Unity's main thread is single-threaded and blocks during domain reload. File polling is the most reliable way to survive recompilation, play-mode transitions, and Editor restarts without losing messages.
+
+---
+
+## Beyond Editing — AI as Game Tester
+
+Most Unity AI tools stop at file editing. Unity AI Bridge goes further — it turns **Claude Code (or any AI IDE) into a game testing harness**.
+
+| Capability | Traditional AI | With Unity AI Bridge |
+|------------|:-:|:-:|
+| Write C# code | :white_check_mark: | :white_check_mark: |
+| Check compilation errors | :x: | :white_check_mark: `console-get-logs` |
+| Enter / exit Play Mode | :x: | :white_check_mark: `editor-application-set-state` |
+| Trigger game actions | :x: | :white_check_mark: `runtime-invoke` |
+| Read runtime game state | :x: | :white_check_mark: `runtime-query` |
+| Take screenshots | :x: | :white_check_mark: `screenshot-capture` |
+| **Full closed loop: Write → Test → Fix → Repeat** | :x: | :white_check_mark: |
+
+### AI Playtest Loop
+
+```
+AI writes code → compiles → enters Play Mode → observes state → judges → fixes → repeats
+     ↑                                                                         │
+     └─────────────────── fully automated loop ────────────────────────────────┘
+```
+
+The pattern: **Act → Wait → Observe → Judge → Repeat**
+
+- **Act**: `runtime-invoke` calls static methods to trigger game actions
+- **Wait**: `wait_playmode.py` / `wait_compile.py` handle timing
+- **Observe**: `runtime-query` reads MonoBehaviour fields + `screenshot-capture` for visuals
+- **Judge**: AI analyzes state/screenshots to decide PASS/FAIL
+
+> [Auto-Playtest Example](examples/auto-playtest/README.md) |
+> [AI Closed-Loop Guide](docs/AI_CLOSED_LOOP.md) |
+> [Playtest Tool Reference](docs/AI_PLAYTEST_GUIDE.md)
 
 ---
 

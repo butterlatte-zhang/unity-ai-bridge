@@ -20,7 +20,7 @@ https://github.com/user-attachments/assets/4e8b3f85-b209-406f-a96e-f8b8eddc9160
 
 ### 核心优势
 
-- **62 个工具，13 个分类** — 场景、GameObject、资源、Prefab、脚本、Profiler、光照探针、测试等，覆盖完整的编辑器工作流，不仅仅是文件读写。
+- **65 个工具，15 个分类** — 场景、GameObject、资源、Prefab、脚本、Profiler、光照探针、截图、运行时、测试等，覆盖完整的编辑器工作流，不仅仅是文件读写。
 - **基于文件的 IPC，非 WebSocket** — 无开放端口、无防火墙问题、无连接中断。能安全度过重编译、PlayMode 切换和编辑器重启。
 - **零外部依赖** — CLI/MCP 服务器用纯 Python 标准库，Unity 包完全自包含。不需要 pip install、npm、Node.js。
 - **全主流 AI IDE** — Claude Code（Skill 模式）、Cursor、GitHub Copilot、Windsurf、Claude Desktop（MCP 模式）。一个 Unity 插件，所有 IDE 通用。
@@ -34,7 +34,7 @@ Unity 6.2 推出了官方的 [AI Gateway](https://docs.unity3d.com/6000.2/Docume
 | | Unity AI Bridge | Unity 6 AI Gateway |
 |---|---|---|
 | **Unity 版本** | 2022.3 LTS+ | 仅 6.2+ |
-| **工具覆盖** | 62 个工具，13 个分类 | 通用工具（场景、资源、脚本、控制台） |
+| **工具覆盖** | 65 个工具，15 个分类 | 通用工具（场景、资源、脚本、控制台） |
 | **深度工具** | Profiler（快照、热点路径、流式）、光照探针、反射调用、包管理 | 暂未提供 |
 | **IPC 机制** | 文件轮询（~100ms） | Unix Socket / Named Pipe |
 | **可扩展性** | `[BridgeTool]` 属性 — 5 行代码 | 待定 |
@@ -68,7 +68,7 @@ Unity 6.2 推出了官方的 [AI Gateway](https://docs.unity3d.com/6000.2/Docume
 
 ## 工具分类
 
-62 个工具，分为 13 个类别：
+65 个工具，分为 15 个类别：
 
 | 分类 | 数量 | 工具 |
 |------|:----:|------|
@@ -80,6 +80,8 @@ Unity 6.2 推出了官方的 [AI Gateway](https://docs.unity3d.com/6000.2/Docume
 | **对象** | 2 | `object-get-data` 获取数据 · `object-modify` 修改 |
 | **编辑器** | 4 | `editor-application-get-state` 获取状态 · `editor-application-set-state` 设置状态 · `editor-selection-get` 获取选中 · `editor-selection-set` 设置选中 |
 | **反射** | 2 | `reflection-method-find` 查找方法 · `reflection-method-call` 调用方法 |
+| **截图** | 1 | `screenshot-capture` 截图（Play Mode 截 Game 视图，Edit Mode 截 Scene 视图） |
+| **运行时** | 2 | `runtime-query` 查询运行时状态 · `runtime-invoke` 调用静态方法 |
 | **控制台** | 1 | `console-get-logs` 获取日志 |
 | **性能分析** | 5 | `profiler-snapshot` 快照 · `profiler-stream` 多帧流 · `profiler-frame-hierarchy` 帧层级 · `profiler-hotpath` 热点路径 · `profiler-gc-alloc` GC 分配 |
 | **包管理** | 4 | `package-list` 已安装 · `package-search` 搜索 · `package-add` 安装 · `package-remove` 卸载 |
@@ -124,6 +126,41 @@ Unity 6.2 推出了官方的 [AI Gateway](https://docs.unity3d.com/6000.2/Docume
 **双通道设计**：同一个 Unity 插件同时服务 Skill 模式（直接 CLI 调用）和 MCP 模式（协议服务器）。两种通道通过相同的文件 IPC 通信 — 磁盘上的请求/响应文件对。无网络 Socket、无端口冲突、无防火墙规则。
 
 **为什么用文件 IPC？** Unity 主线程是单线程的，域重载时会阻塞。文件轮询是最可靠的方式，能安全度过重编译、PlayMode 切换和编辑器重启，不会丢失消息。
+
+---
+
+## 超越编辑 — AI 作为游戏测试员
+
+大多数 Unity AI 工具止步于文件编辑。Unity AI Bridge 更进一步 — 它把 **Claude Code（或任何 AI IDE）变成游戏测试 Harness**。
+
+| 能力 | 传统 AI | Unity AI Bridge |
+|------|:-:|:-:|
+| 编写 C# 代码 | :white_check_mark: | :white_check_mark: |
+| 检查编译错误 | :x: | :white_check_mark: `console-get-logs` |
+| 进入 / 退出 Play Mode | :x: | :white_check_mark: `editor-application-set-state` |
+| 触发游戏行为 | :x: | :white_check_mark: `runtime-invoke` |
+| 读取运行时游戏状态 | :x: | :white_check_mark: `runtime-query` |
+| 截图 | :x: | :white_check_mark: `screenshot-capture` |
+| **完整闭环：编写 → 测试 → 修复 → 重复** | :x: | :white_check_mark: |
+
+### AI 自动测试闭环
+
+```
+AI 写代码 → 编译 → 进入 Play Mode → 观察状态 → 判断 → 修复 → 重试
+     ↑                                                           │
+     └──────────────────── 全自动闭环 ──────────────────────────┘
+```
+
+模式：**行动 → 等待 → 观察 → 判断 → 重复**
+
+- **行动**：`runtime-invoke` 调用静态方法触发游戏行为
+- **等待**：`wait_playmode.py` / `wait_compile.py` 处理时序
+- **观察**：`runtime-query` 读取 MonoBehaviour 字段 + `screenshot-capture` 截图
+- **判断**：AI 分析状态/截图，决定通过/失败
+
+> [自动测试示例](examples/auto-playtest/README.md) |
+> [AI 闭环开发指南](docs/AI_CLOSED_LOOP.md) |
+> [测试工具参考](docs/AI_PLAYTEST_GUIDE.md)
 
 ---
 

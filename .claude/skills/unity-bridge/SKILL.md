@@ -1,6 +1,6 @@
 ---
 name: unity-bridge
-description: Remote-control Unity Editor via file-based IPC — 62 tools covering scene management, GameObject/component CRUD, asset operations, prefab editing, script execution, profiling, light probes, package management, and more.
+description: Remote-control Unity Editor via file-based IPC — 65 tools covering scene management, GameObject/component CRUD, asset operations, prefab editing, script execution, profiling, light probes, screenshot, runtime query/invoke, package management, and more.
 user_invocable: true
 ---
 
@@ -26,7 +26,7 @@ where `<skill-dir>` is the directory containing this file. Omit JSON when no par
 4. **Serial execution**: Only one tool call at a time. Concurrent calls are queued
 5. **Param source**: JSON files under `params/` are auto-generated from C# tool method signatures
 
-## Tool Index (62 tools)
+## Tool Index (65 tools)
 
 **Scene (7)**: `scene-list-opened` list opened scenes · `scene-get-data` get scene data · `scene-open` open scene · `scene-create` create scene · `scene-save` save scene · `scene-set-active` set active scene · `scene-unload` unload scene
 
@@ -43,6 +43,10 @@ where `<skill-dir>` is the directory containing this file. Omit JSON when no par
 **Editor (4)**: `editor-application-get-state` editor state · `editor-application-set-state` set state · `editor-selection-get` get selection · `editor-selection-set` set selection
 
 **Reflection (2)**: `reflection-method-find` find methods · `reflection-method-call` call method
+
+**Screenshot (1)**: `screenshot-capture` capture Game view (Play Mode) or Scene view (Edit Mode) as PNG
+
+**Runtime (2)**: `runtime-query` query MonoBehaviour fields in Play Mode · `runtime-invoke` invoke public static methods in Play Mode
 
 **Console (1)**: `console-get-logs` get logs
 

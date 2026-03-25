@@ -15,7 +15,7 @@ Unity AI Bridge was originally derived from Unity-MCP's core architecture, inclu
 - Complete namespace rename (`Unity-MCP` → `UnityAiBridge`)
 - Rewritten MCP server (pure Python stdlib, zero dependencies)
 - Added CLI bridge for Claude Code Skill mode
-- Extended tool set (62 tools across 13 categories)
+- Extended tool set (65 tools across 15 categories)
 - Added Unity type JSON converters (Vector, Color, Quaternion, Bounds, etc.)
 - Added Profiler, LightProbe, and Tests tool categories
 - Attribute-based tool auto-discovery system

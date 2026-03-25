@@ -1,0 +1,26 @@
+{
+  "name": "runtime-invoke",
+  "title": "Runtime / Invoke",
+  "description": "Invoke a public static method on any class in Play Mode. Useful for triggering game actions, changing state, calling test helpers, or executing debug commands. The method must be public and static. For instance methods on MonoBehaviours, use 'reflection-method-call' instead.",
+  "parameters": [
+    {
+      "name": "typeName",
+      "type": "string",
+      "description": "Full type name (e.g. 'MyNamespace.GameManager') or simple name (e.g. 'GameManager'). Searches all loaded assemblies.",
+      "required": "true"
+    },
+    {
+      "name": "methodName",
+      "type": "string",
+      "description": "Name of the public static method to invoke.",
+      "required": "true"
+    },
+    {
+      "name": "arguments",
+      "type": "string",
+      "description": "Arguments as JSON array (e.g. '[\"hello\", 42, true]'). Leave empty or '[]' for no-arg methods. Supported types: string, int, float, bool, null.",
+      "default": "[]",
+      "required": "false"
+    }
+  ]
+}

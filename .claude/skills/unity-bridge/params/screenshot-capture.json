@@ -1,0 +1,35 @@
+{
+  "name": "screenshot-capture",
+  "title": "Screenshot / Capture",
+  "description": "Capture a screenshot of the Game view (Play Mode) or Scene view (Edit Mode) and save it as a PNG file. Returns the file path so Claude can use the Read tool to view the image. Useful for visually verifying game state, UI layout, or debugging rendering issues.",
+  "parameters": [
+    {
+      "name": "tag",
+      "type": "string",
+      "description": "Optional tag prefix for the filename (e.g. 'before-fix', 'ui-check'). If omitted, the filename is 'screenshot_<timestamp>.png'.",
+      "default": "",
+      "required": "false"
+    },
+    {
+      "name": "width",
+      "type": "integer",
+      "description": "Output width in pixels (default: 960).",
+      "default": "960",
+      "required": "false"
+    },
+    {
+      "name": "height",
+      "type": "integer",
+      "description": "Output height in pixels (default: 540).",
+      "default": "540",
+      "required": "false"
+    },
+    {
+      "name": "superSize",
+      "type": "integer",
+      "description": "Super-sampling multiplier for higher quality (1-4, default: 1). Only applies to Play Mode captures.",
+      "default": "1",
+      "required": "false"
+    }
+  ]
+}

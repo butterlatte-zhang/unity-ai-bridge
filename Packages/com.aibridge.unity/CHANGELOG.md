@@ -9,7 +9,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
-- **62 tools** across 13 categories: Scene, GameObject, Assets, Prefab, Script, Object, Editor, Reflection, Console, Profiler, Package, LightProbe, Tests
+- **65 tools** across 15 categories: Scene, GameObject, Assets, Prefab, Script, Object, Editor, Reflection, Screenshot, Runtime, Console, Profiler, Package, LightProbe, Tests
 - **File-based IPC** — reliable local communication via `Temp/UnityBridge/`, no network ports
 - **MCP Server** — stdio-based JSON-RPC server for Cursor, GitHub Copilot, Windsurf, Claude Desktop
 - **Claude Code Skill** — direct integration via SKILL.md and parameter files

@@ -1,0 +1,34 @@
+{
+  "name": "runtime-query",
+  "title": "Runtime / Query",
+  "description": "Query runtime game state in Play Mode. Find MonoBehaviours by type name and read their public fields and properties. Useful for verifying game logic, checking object states, reading scores, debugging component values, etc. Works with any MonoBehaviour in the scene — no project-specific setup required.",
+  "parameters": [
+    {
+      "name": "typeName",
+      "type": "string",
+      "description": "Full or partial type name of the MonoBehaviour to find (e.g. 'PlayerController', 'GameManager', 'MyNamespace.EnemyAI').",
+      "required": "true"
+    },
+    {
+      "name": "fields",
+      "type": "string",
+      "description": "Specific field or property names to read (comma-separated). If empty, reads all public instance fields and properties.",
+      "default": "",
+      "required": "false"
+    },
+    {
+      "name": "findAll",
+      "type": "boolean",
+      "description": "If true, find all instances. If false, find first instance only.",
+      "default": "false",
+      "required": "false"
+    },
+    {
+      "name": "maxResults",
+      "type": "integer",
+      "description": "Maximum number of instances to return when findAll=true (default: 10).",
+      "default": "10",
+      "required": "false"
+    }
+  ]
+}
